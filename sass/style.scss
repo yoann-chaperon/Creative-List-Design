@@ -7,11 +7,12 @@
 @import "libs/font.scss";
 
 //---- COLOR -----//
-$color1: #2f363e;
-$color2: rgba(255, 255, 255, 0.2);
+$color1: #f7f7f7;
+$color2: #0ed095;
 $color3: #fff;
-$color4: #bcbcc0;
-$color5:#95999D;
+$color4: #fc5f9b;
+$color5: #a362ea;
+$color6:#999;
 
 body {
     display: flex;
@@ -19,5 +20,80 @@ body {
     align-items: center;
     min-height: 100vh;
     background: $color1;
-    //font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
+}
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    & .box {
+        position: relative;
+        width: 400px;
+        height: 100px;
+        background: $color3;
+        cursor: pointer;
+        box-shadow: 10px 10px 15px $B0000025;
+        transition: 0.5s ease-in-out;
+        &:nth-child(1) {
+            transform: translateX(-70px);
+        }
+        &:nth-child(3) {
+            transform: translateX(70px);
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background: var(--clr);
+            transition: 0.5s ease-in-out;
+        }
+        &:hover::before {
+            width: 100%;
+        }
+        & .content {
+            position: relative;
+            @include displayA(100%);
+            & .icon {
+                position: relative;
+                min-width: 100px;
+                @include display;
+                & ion-icon {
+                    font-size: 2.5em;
+                    color: var(--clr);
+                    transition: .5s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+.container:hover .box:nth-child(1) {
+    transform: translateX(0);
+}
+.container:hover .box:nth-child(3) {
+    transform: translateX(0);
+}
+
+.container .box:hover .content .icon ion-icon {
+    color: $color3;
+    transition: .5s ease-in-out;
+
+}
+
+.container .box .content .text h3 {
+    font-weight: 500;
+    color: var(--clr);
+    transition: .5s ease-in-out;
+}
+.container .box:hover .content .text h3,
+.container .box:hover .content .text p {
+    color: $color3;
+}
+
+.container .box .content .text p {
+    font-size: 0.9em;
+    color: $color6;
+    transition: .5s ease-in-out;
 }
